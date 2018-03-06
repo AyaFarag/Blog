@@ -2,4 +2,4 @@
 
 {{-- create models with m
     create controllers with resource
-    create views --}}
+    create views  --}}
