@@ -14,7 +14,10 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_reviews');
+            $table->string('stars');
+            $table->integer('article_id');
+            $table->integer('owner_id');
             $table->timestamps();
         });
     }

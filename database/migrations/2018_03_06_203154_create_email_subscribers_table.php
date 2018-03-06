@@ -14,7 +14,9 @@ class CreateEmailSubscribersTable extends Migration
     public function up()
     {
         Schema::create('email_subscribers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_emailSubscriber');
+            $table->dateTime('subscribeDate');
+            $table->integer('owner_id');
             $table->timestamps();
         });
     }

@@ -14,7 +14,11 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_articles');
+            $table->string('title');
+            $table->longText('content');
+            $table->integer('owner_id');
+            $table->integer('parent_id');
             $table->timestamps();
         });
     }
