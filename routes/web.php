@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('house', function () {
     return view('house');
 });
 
 // Admin Routes
-Route::group(['prefix' => 'admin'] , function() {
+Route::group(['prefix' => 'admin'], function() {
 
     Route::get('admin', function() {
         return view('admin.home'); 
     });
 
 });
+
