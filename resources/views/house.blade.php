@@ -1,5 +1,5 @@
-<h1>Welcome laravel House</h1>
+<h1>Welcome laravel App</h1>
 
-{{-- create models with m
-    create controllers with resource
-    create views  --}}
+{{-- create models relations 
+    create controllers quieries
+    create views blade templet --}}

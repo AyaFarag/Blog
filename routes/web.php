@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('house', function () {
+Route::get('/', function () {
     return view('house');
 });
 
@@ -19,7 +19,7 @@ Route::get('house', function () {
 Route::group(['prefix' => 'admin'], function() {
 
     Route::get('admin', function() {
-        return view('admin.home'); 
+        return view('admin.index'); 
     });
 
 });
