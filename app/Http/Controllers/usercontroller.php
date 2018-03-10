@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
-
-class articlesController extends Controller
+class usercontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,6 @@ class articlesController extends Controller
     public function index()
     {
         //
-        DB::table('articles')->get;
-        return view('');
     }
 
     /**

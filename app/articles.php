@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class articles extends Model
 {
-    
+    protected $primaryKey = 'id_articles';
+
     protected $fillable = [
-        'title', 'content'
+        'title', 'content','owner_id',
     ];
 }
