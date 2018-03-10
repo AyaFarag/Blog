@@ -18,8 +18,8 @@ Route::get('/', function () {
 // Admin Routes
 Route::group(['prefix' => 'admin'], function() {
 
-    Route::get('admin', function() {
-        return view('admin.index'); 
+    Route::get('cpanel', function() {
+        return view('admin.cpanel'); 
     });
 
 });
