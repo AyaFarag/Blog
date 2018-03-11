@@ -12,14 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('house');
+    return view('welcome');
+});
+
+// admin cpanel in house view
+Route::get('cpanel', function () {
+    return view('cpanel');
 });
 
 // Admin Routes
 Route::group(['prefix' => 'admin'], function() {
 
-    Route::get('cpanel', function() {
-        return view('admin.cpanel'); 
+    Route::get('index', function() {
+        return view('admin.index'); 
     });
 
 });
