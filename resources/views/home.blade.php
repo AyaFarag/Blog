@@ -1,8 +1,14 @@
 @include('header')
 @include('navbar')
+
+
+
 @include('contents')
 
 
+
+
+ 
 
 
 

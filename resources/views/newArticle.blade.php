@@ -1,6 +1,19 @@
 
 <div class="art-container">
     
+    {!! Form::open(['route'=>'add.store']) !!}
+
+    {!! Form::text('title',old('title'),['placeholder'=>'title','class'=>'form-control','id'=>'first','name'=>'art-title'] ) !!}<br/>
+
+    {!! Form::textarea('content',old('content'),['placeholder'=>'write your new art','class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'art-content'] ) !!}<br/>
+
+    {!! Form::file('file',['name'=>'art-file']) !!}<br/><br/>
+
+    {!! Form::submit('add', ['class'=>'btn btn-primary']) !!}
+
+    {!! Form::close() !!}
+
+
     <form action="{{route('add.store')}}" method="POST">
         {{ csrf_field() }}
     <div class="form-group">

@@ -160,6 +160,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // ///////////////// my packages ///////
+        Collective\Html\HtmlServiceProvider::class,
+        // ///////////////// my packages ///////
     ],
 
     /*
@@ -208,6 +211,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // ////////// my classes //////////
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        // ////////// my classes //////////
 
     ],
 
