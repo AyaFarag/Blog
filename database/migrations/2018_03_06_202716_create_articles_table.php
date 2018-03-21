@@ -18,6 +18,9 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->longText('content');
             $table->integer('owner_id');
+          //  $table->integer('owner_name');
+            // $table->date('date');
+            // $table->time('time');
             $table->timestamps();
         });
     }

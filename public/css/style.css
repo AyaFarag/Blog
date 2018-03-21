@@ -1,0 +1,17 @@
+.body{
+    height: 1000px ;
+}
+.art-container {
+    width: 60% ;
+    margin:auto;
+}
+.art-span {
+    font-size: 0.8em;
+    color: #888;
+}
+
+.art-inputs{
+    width: 97%;
+    height: 97%;
+    margin: auto;
+}

@@ -15,17 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// admin cpanel in house view
+// admin cpanel in cpanel view
 Route::get('cpanel', function () {
     return view('cpanel');
 });
 
-// Admin Routes
-Route::group(['prefix' => 'admin'], function() {
+// Site Routes
 
-    Route::get('index', function() {
-        return view('admin.index'); 
-    });
-
+Route::get('home', function() {
+    return view('home'); 
 });
 
+Route::resource('home','articlesController');
+
+Route::resource('add','articlesController');

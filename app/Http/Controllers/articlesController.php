@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App;
 
 
 class articlesController extends Controller
@@ -15,9 +16,10 @@ class articlesController extends Controller
      */
     public function index()
     {
-        //
-        DB::table('articles')->get;
-        return view('');
+        $newAtr = App\articles::orderBy('id_articles','desc')->get();
+        return view('home' ,['articles'=>$newAtr ,'title'=>'Home']);
+          
+       
     }
 
     /**
@@ -38,7 +40,13 @@ class articlesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addArt = new App\articles();
+        $addArt->title = $request->input('art-title');
+        $addArt->content = $request->input('art-content');
+        $addArt->owner_id = 0; // i will ad user id here
+
+        $addArt->save();
+        return redirect()->route('home.index');
     }
 
     /**
@@ -60,7 +68,8 @@ class articlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $editart = App\articles::find($id);
+        return view('');
     }
 
     /**
@@ -83,6 +92,7 @@ class articlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $artdelete = App\articles::destroy($id);
+        return redirect()->route('home.index');
     }
 }
