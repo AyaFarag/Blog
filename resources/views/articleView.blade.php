@@ -1,7 +1,9 @@
 @foreach ($articles as $art)
     
 <div class="card" >
-  <img class="card-img-top" src="{{url('images/art1.jpg')}}" alt="Card image cap">
+  
+  <img class="card-img-top" src="{{ asset('uploads/'. $art->imgpath) }}" alt="Card image cap">
+  
   <div class="card-body">
     <h4 class="card-title"><a href="#">{{$art->title}}</a></h4>
       

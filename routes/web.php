@@ -27,5 +27,11 @@ Route::get('home', function() {
 });
 
 Route::resource('home','articlesController');
+Route::resource('articles', 'articlesController');
+Route::resource('authers', 'userController');
+Route::resource('categories', 'categoriesController');
 
+// add new article
 Route::resource('add','articlesController');
+
+

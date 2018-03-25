@@ -39,7 +39,7 @@ class articles extends Model
 
     public function categories()
     {
-        return $this->hasOne('App\categories');
+        return $this->belongsTo('App\categories');
     }
 
 }

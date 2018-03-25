@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Database\Query\Builder;
 use App;
 
 
@@ -40,13 +41,41 @@ class articlesController extends Controller
      */
     public function store(Request $request)
     {
-        $addArt = new App\articles();
-        $addArt->title = $request->input('art-title');
-        $addArt->content = $request->input('art-content');
+        $addArt           = new App\articles();
+        $addArt->title    = $request->input('art-title');
+        $addArt->content  = $request->input('art-content');
         $addArt->owner_id = 0; // i will ad user id here
+        // $addArt->imgpath = img; // i will ad media id here
+        
+        $file = request()->file('file');
+        $name = $file->getClientOriginalName();
+        $ext  = $file->getClientOriginalExtension(); 
+        $location= $file->move(public_path('uploads'), $name);
+
+        $addArt->imgpath = $name ;
+        // 'image_'.time().'.'.$ext
+       // $addArt->imgpath = $request->file('file');
+        //$ext = $addArt->getClientOriginalExtension();
+       // $addArt->move(public_path('uploads'),'image_'.time().'.'.$ext);
 
         $addArt->save();
         return redirect()->route('home.index');
+    }
+
+
+
+    public function upload()
+    {
+        $file = new App\articles();
+        $file = request()->file('file');
+        $name = $file->getClientOriginalName();
+        $size = $file->getSize();
+        $mim  = $file->getMimeType();
+        $ext  = $file->getClientOriginalExtension();
+        $realPath = $file->getRealPath();
+
+        $file->move(public_path('uploads'),$name);
+       // return redirect()->route('add.store');
     }
 
     /**
