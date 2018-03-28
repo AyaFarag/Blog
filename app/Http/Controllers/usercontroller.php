@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
 
 class usercontroller extends Controller
 {
@@ -13,7 +14,8 @@ class usercontroller extends Controller
      */
     public function index()
     {
-        //
+        $authers = App\user::get();
+        return view('authers');
     }
 
     /**

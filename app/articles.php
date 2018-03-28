@@ -8,8 +8,10 @@ class articles extends Model
 {
     protected $primaryKey = 'id_articles';
 
+    protected $table = "articles";
+
     protected $fillable = [
-        'title', 'content','owner_id',
+        'title', 'content','owner_id','category_id'
     ];
 
     public function articles()
@@ -39,7 +41,7 @@ class articles extends Model
 
     public function categories()
     {
-        return $this->belongsTo('App\categories');
+        return $this->belongsTo('App\categories','category_id');
     }
 
 }

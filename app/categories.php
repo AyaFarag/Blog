@@ -4,12 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class categories extends Model
 {
-    protected $primaryKey = 'id_category';
+    protected $primaryKey = 'id';
+
+    protected $table = "categories";
 
     protected $fillable = [
-        'name', 'describtion','parent_id','article_id'
+        'name', 'describtion','parent_id'
     ];
 
     public function categories()

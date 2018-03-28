@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
-use Session;
 
-class categoriesController extends Controller
+class tagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        //
-        $categories = App\categories::get();
-        return view('categories', compact('categories'));
+        $tags = App\tags::get();
+        return view('tags');
     }
 
     /**
@@ -27,7 +25,7 @@ class categoriesController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -38,15 +36,7 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $addcategory = new App\categories();
-        $addcategory->name = $request->input('category-add');
-        $addcategory->describtion = $request->input('category-desc');
-        $addcategory->parent_id = 0;
-        $addcategory->save();
-
-        Session::flash('Success','New Category has been added');
-
-        return redirect()->route('categories.index');
+        //
     }
 
     /**

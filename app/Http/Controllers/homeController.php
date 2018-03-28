@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
-use Session;
 
-class categoriesController extends Controller
+
+
+class homeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        //
-        $categories = App\categories::get();
-        return view('categories', compact('categories'));
+        $articles = App\articles::orderBy('id_articles','desc')->get();
+      
+        return View('home', compact('articles'));
     }
 
     /**
@@ -27,7 +28,10 @@ class categoriesController extends Controller
      */
     public function create()
     {
-
+         $categories = App\categories::all();
+       
+         return View('home', compact('categories')); 
+      //   return view('newArticle')->withCategoryies($categoryies);
     }
 
     /**
@@ -38,15 +42,7 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        $addcategory = new App\categories();
-        $addcategory->name = $request->input('category-add');
-        $addcategory->describtion = $request->input('category-desc');
-        $addcategory->parent_id = 0;
-        $addcategory->save();
-
-        Session::flash('Success','New Category has been added');
-
-        return redirect()->route('categories.index');
+        //
     }
 
     /**

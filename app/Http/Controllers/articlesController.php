@@ -8,6 +8,8 @@ use Illuminate\Database\Query\Builder;
 use App;
 
 
+
+
 class articlesController extends Controller
 {
     /**
@@ -17,12 +19,13 @@ class articlesController extends Controller
      */
     public function index()
     {
-        $newAtr = App\articles::orderBy('id_articles','desc')->get();
-        return view('home' ,['articles'=>$newAtr ,'title'=>'Home']);
-          
+        //$newAtr = App\articles::orderBy('id_articles','desc')->get();
+       // return view('home' ,['articles'=>$newAtr ,'title'=>'Home']);
+       $articles = App\articles::orderBy('id_articles','desc')->get();
+    
+       return View('arts', compact('articles'));
        
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -30,7 +33,9 @@ class articlesController extends Controller
      */
     public function create()
     {
-        //
+        $artpage = App\articles::get();
+        return view('articlepage', compact('artpage'));
+
     }
 
     /**
@@ -41,23 +46,19 @@ class articlesController extends Controller
      */
     public function store(Request $request)
     {
-        $addArt           = new App\articles();
-        $addArt->title    = $request->input('art-title');
-        $addArt->content  = $request->input('art-content');
-        $addArt->owner_id = 0; // i will ad user id here
-        // $addArt->imgpath = img; // i will ad media id here
+        $addArt              = new App\articles();
+        $addArt->title       = $request->input('art-title');
+        $addArt->content     = $request->input('art-content');
+        $addArt->owner_id    = 0; // i will ad user id here
+        $addArt->category_id = $request->input('category_id'); // i will ad category_id here
         
-        $file = request()->file('file');
-        $name = $file->getClientOriginalName();
-        $ext  = $file->getClientOriginalExtension(); 
-        $location= $file->move(public_path('uploads'), $name);
-
-        $addArt->imgpath = $name ;
-        // 'image_'.time().'.'.$ext
-       // $addArt->imgpath = $request->file('file');
-        //$ext = $addArt->getClientOriginalExtension();
-       // $addArt->move(public_path('uploads'),'image_'.time().'.'.$ext);
-
+        
+        $file                = request()->file('file');
+        $name                = $file->getClientOriginalName();
+        $ext                 = $file->getClientOriginalExtension(); 
+        $location            = $file->move(public_path('uploads'), $name);
+        $addArt->imgpath     = $name ;
+        
         $addArt->save();
         return redirect()->route('home.index');
     }
@@ -76,6 +77,7 @@ class articlesController extends Controller
 
         $file->move(public_path('uploads'),$name);
        // return redirect()->route('add.store');
+       // 'image_'.time().'.'.$ext
     }
 
     /**

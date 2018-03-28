@@ -22,16 +22,25 @@ Route::get('cpanel', function () {
 
 // Site Routes
 
-Route::get('home', function() {
-    return view('home'); 
-});
+//Route::get('home', function() {
+  //  return view('home'); 
+//});
 
-Route::resource('home','articlesController');
-Route::resource('articles', 'articlesController');
+Route::resource('home','homeController');
+
+Route::get('category','homeController@create');
+
+Route::resource('arts', 'articlesController');
 Route::resource('authers', 'userController');
 Route::resource('categories', 'categoriesController');
+Route::resource('tags', 'tagsController');
 
 // add new article
 Route::resource('add','articlesController');
+
+// add new category
+Route::resource('addcategory','categoriesController');
+// article page 
+Route::any('articlepage','articlesController@create');
 
 

@@ -5,7 +5,7 @@
   <img class="card-img-top" src="{{ asset('uploads/'. $art->imgpath) }}" alt="Card image cap">
   
   <div class="card-body">
-    <h4 class="card-title"><a href="#">{{$art->title}}</a></h4>
+    <h4 class="card-title"><a href="{{route('home.index')}}">{{$art->title}}</a></h4>
       
     <p class="card-text">{{$art->content}}</p>
     <a href="#" class="">Read more</a><br/>
@@ -13,8 +13,9 @@
     <span class="art-span">Auther</span>
     <span class="art-span">{{$art->created_at}}</span>
     <span class="art-span">20 min</span>
+    <br/>
+    <p> Posted In : {{$art->categories['name']}}</p>
     
-
     <br/>
     
     <form action="{{action('articlesController@destroy', $art->id_articles)}}" method="POST">
