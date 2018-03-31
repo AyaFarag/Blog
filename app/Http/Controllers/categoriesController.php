@@ -15,7 +15,7 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        //
+        
         $categories = App\categories::get();
         return view('categories', compact('categories'));
     }
@@ -27,7 +27,8 @@ class categoriesController extends Controller
      */
     public function create()
     {
-
+       // $aya = 'aya ahmed';
+       // return view('categories', compact('aya'));
     }
 
     /**
@@ -40,11 +41,10 @@ class categoriesController extends Controller
     {
         $addcategory = new App\categories();
         $addcategory->name = $request->input('category-add');
-        $addcategory->describtion = $request->input('category-desc');
         $addcategory->parent_id = 0;
         $addcategory->save();
 
-        Session::flash('Success','New Category has been added');
+        Session::flash('success','New Category has been added');
 
         return redirect()->route('categories.index');
     }
@@ -91,6 +91,8 @@ class categoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $removecat = App\categories::destroy($id);
+        return redirect()->route('categories.index');
+
     }
 }

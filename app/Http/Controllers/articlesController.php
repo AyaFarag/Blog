@@ -19,8 +19,7 @@ class articlesController extends Controller
      */
     public function index()
     {
-        //$newAtr = App\articles::orderBy('id_articles','desc')->get();
-       // return view('home' ,['articles'=>$newAtr ,'title'=>'Home']);
+       
        $articles = App\articles::orderBy('id_articles','desc')->get();
     
        return View('arts', compact('articles'));
@@ -33,8 +32,7 @@ class articlesController extends Controller
      */
     public function create()
     {
-        $artpage = App\articles::get();
-        return view('articlepage', compact('artpage'));
+    
 
     }
 

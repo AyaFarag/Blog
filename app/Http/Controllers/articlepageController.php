@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
-use Illuminate\Support\Facades\Session;
-
-
-
-class homeController extends Controller
+class articlepageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +13,11 @@ class homeController extends Controller
      */
     public function index()
     {
-        $category = App\categories::all();
-        $articles = App\articles::orderBy('id_articles','desc')->get();
-      
-        return View('home', compact('articles','category'));
+        
+        $articles = App\articles::all();
+        $x = $articles;
+        $articlepage =  App\articles::get();
+        return view('articlepage' , compact('articlepage', 'articles'));
     }
 
     /**
@@ -30,13 +27,7 @@ class homeController extends Controller
      */
     public function create()
     {
-      //  $categor = 'Aya';
-        
-      //  return view('home', compact('categor'));
-        // $categories = App\categories::all();
-       
-        // return View('home', compact('categories')); 
-      //   return view('newArticle')->withCategoryies($categoryies);
+        //
     }
 
     /**
@@ -47,14 +38,7 @@ class homeController extends Controller
      */
     public function store(Request $request)
     {
-        $addcategory = new App\categories();
-        $addcategory->name = $request->input('add-category');
-        $addcategory->parent_id = 0;
-        $addcategory->save();
-
-        Session::flash('success','New Category has been added');
-
-        return redirect()->route('home.index');
+        //
     }
 
     /**
@@ -65,7 +49,9 @@ class homeController extends Controller
      */
     public function show($id)
     {
-        //
+        $articles2 = App\articles::find($id);
+     //   return view('articlepage');
+        return redirect()->route('articlepage.index', ['x'=>$articles2]);
     }
 
     /**

@@ -37,10 +37,14 @@ Route::resource('tags', 'tagsController');
 
 // add new article
 Route::resource('add','articlesController');
+// add new category in home view
+Route::resource('addhomecat','homeController');
 
 // add new category
 Route::resource('addcategory','categoriesController');
 // article page 
-Route::any('articlepage','articlesController@create');
+Route::resource('articlepage','articlepageController');
+
+
 
 

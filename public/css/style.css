@@ -32,3 +32,12 @@
 width: 60%;
 margin-top: 30px;
 }
+.reviews {
+    height: 100px;
+    width: 50%;
+    margin-top: 30px;
+}
+.comment {
+    width: 100%;
+    margin-top: 30px;
+}

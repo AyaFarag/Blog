@@ -6,14 +6,13 @@
 <div class="cat float-right">
 <div class="jumbotron">
         <div class="container">
-          <h5 class="">Add New Category</h5>
+          <h5 class="text-primary">Add New Category</h5>
           <form action="{{ route('addcategory.store')}}" method="POST">
                 {{ csrf_field() }} 
-          <label> Name:</label>      
-          <input name="category-add" type="text" class="form-control catinput"/>
-          <label> Describtion:</label>
-          <textarea name="category-desc" rows="2" class="form-control catinput"></textarea>
-          <input type="submit" value="Add" class="btn btn-success btn-block"/>
+               
+          <input name="category-add" type="text" class="form-control catinput" placeholder="Category Name"/>
+
+          <input type="submit" value="Add" class="btn btn-primary btn-block"/>
         </form>
         </div>
       </div>
@@ -21,13 +20,13 @@
 
 
 <table class="table">
-    <h1>Categories</h1>
+    <h1 class="text-primary">Categories</h1>
 
 <thead class="thead-light">
     <tr>
         <th># </th>
         <th>Name </th>
-        <th>Describtion  </th>
+        
         <th>action  </th>
     </tr>
 </thead>
@@ -35,9 +34,19 @@
     <tr>
             <th>{{$categories->id}}</th>
             <td>{{$categories->name}}</td>
-            <td>{{$categories->describtion}}</td>
-            <td> <span><a class="text-danger" href="#">Delete</a></span> 
-            <span><a href="#">Edit</a></span> </td>
+            <td>
+        
+            <span class="d-inline-block">
+                <form action="{{action('categoriesController@destroy', $categories->id)}}" method="POST">
+                            {{ csrf_field() }}
+                   <input type="hidden" name="_method" value="DELETE" />
+                   <span><button type="submit" class="bg-white border border-white"><i class="fas fa-trash text-danger ">  </i></button></span>
+                </form>
+           </span> 
+            <span>
+                    <button type="submit" class="bg-white border border-white"><span><i class="fas fa-edit text-primary"></i></span></button>    
+            </span> 
+        </td>
     </tr>
 
 @endforeach
