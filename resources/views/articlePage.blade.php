@@ -3,30 +3,72 @@
 
  {{--  article  --}}
  <div class="container">
-   {{--  @foreach ($articles as $articles)  --}}
-   <div class="card mb-3">
-        {{--  <h5 class="card-title">{{$articles->title}}</h5>  --}}
-    {{--  <img class="card-img-top" src="{{ asset('uploads/'.  ) }}" alt="Card image cap">  --}}
-    <div class="card-body">
-            <div class="card-body">
-
-              
-                    <h4 class="card-title"><?php  print_r($x) ?></h4>
-                      
-                    <p class="card-text"></p>
-                    <a href="#" class="">Read more</a><br/><br/>
-                
-                    <span class="art-span">Auther</span>
-                    <span class="art-span"></span>
-                    <span class="art-span">20 min</span>
-                    <br/> 
-                    <p> Posted In : <a href="#"> </a></p>
-    </div>
-  </div>
-  
    
-
+     {{--  article info   --}}
     
+ <div class="row">
+    <div class="col col-8">
+       <div> 
+         <div class="card mb-3">
+        {{--  <h4 class="card-title card-body"> {{ $articles->title }}</h4>  --}}
+        {{--  <h5 class="card-title">{{$articles->title}}</h5>  --}}
+   
+         
+            <div class="card-body">
+                    <h4 class="card-title"> {{ $articles->title }}</h4>
+                      <hr/>
+                    <p class="card-text lead"> {{ $articles->content }} </p>
+                     <img class="card-img-top artimg" src="{{ asset('uploads/'. $articles->imgpath ) }}" alt="Card image cap "/>
+                    <br/><br/>
+            </div>
+         </div>
+    </div>
+</div>
+          
+       
+
+    {{--  article part  --}}
+
+         
+                <div class="col col-4  ">
+                       
+                           <div>
+                    <div class="d-inline-block cardstyle">
+                   
+                           <div class="card bg-light mb-3" style="">
+                                   
+                                   <div class="card-body">
+
+                                        <h6 class="">Auther :</h6>
+                                        <span class="">Auther</span><br/><br/>
+              
+                                        <h6 class="">Post Date :</h6>
+                                        <span class=""> {{ date('M j, Y', strtotime($articles->created_at)) }} </span><br/><br/>
+                                        
+                                        <h6 class="">Category :</h6>
+                                        <span class=""> Posted In : <a href="#"> {{$articles->categories['name']}} </a></span><br/><br/>
+
+                                        <h6 class=""> Updatet at :</h6>
+                                        <span class=""> {{ date('M j, Y', strtotime($articles->updated_at)) }} </span><br/><br/>
+                                  
+                                     <form action="{{action('articlepageController@edit', $articles->id_articles)}}" method="GET" class="">
+                                           {{ csrf_field() }}
+                                         <button type="submit" class=" btn btn-primary btn-block">Edit</button>
+                                     </form>
+                                    
+           
+                                   </div>
+                                 </div>
+                                </div>
+                           </div>
+                       
+                </div>
+                
+           
+                 
+            </div>
+        
+              {{--  end of edit btn  --}}
 
 
 {{--  reviews  --}}
@@ -63,6 +105,7 @@
     </div>
 </div> 
 
+</div>
 </div>
 </div>
 @include('footer')

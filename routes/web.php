@@ -45,6 +45,11 @@ Route::resource('addcategory','categoriesController');
 // article page 
 Route::resource('articlepage','articlepageController');
 
+// edit article page route
+Route::resource('editarticle','articlepageController');
 
+Route::get('editarticle', function () {
+    return view('edit-art');
+}); 
 
 

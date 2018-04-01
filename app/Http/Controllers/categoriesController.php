@@ -16,7 +16,7 @@ class categoriesController extends Controller
     public function index()
     {
         
-        $categories = App\categories::get();
+        $categories = App\categories::orderBy('id','desc')->get();
         return view('categories', compact('categories'));
     }
 

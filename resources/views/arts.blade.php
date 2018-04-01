@@ -10,6 +10,8 @@
         </p>
       </div>
 
+
+
       
       @include('articleView')
     </div>

@@ -56,15 +56,14 @@
                         
                         {!! Form::text('title',old('title'),['placeholder'=>'title','class'=>'form-control','id'=>'first','name'=>'art-title'] ) !!}<br/>
                     
-                        {!! Form::textarea('content',old('content'),['placeholder'=>'write your new art','class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'art-content'] ) !!}
-    
+                        {!! Form::textarea('content',old('content'),['placeholder'=>'write your new article ...','class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'art-content'] ) !!}<br/>
+
+                        <span><i class="fas fa-camera"></i></span>
+                        {!! Form::file('file',['name'=>'file']) !!}<br/><br/>
+
                         {!! Form::label('category_id', 'Category :',['name'=>'category-option','class'=>'mr-sm-2','for'=>'inlineFormCustomSelect']) !!}
-                        {{--  <label name="category-option" class="mr-sm-2" for="inlineFormCustomSelect">Categories</label>  --}}
-                        {{--  <select  class="custom-select mb-2 mr-sm-2 mb-sm-0 form-control" id="inlineFormCustomSelect" >
-                          
-                        {!! Form::select('category-option', 'PHP','Choose Category' ,['class'=>'custom-select mb-2 mr-sm-2 mb-sm-0 form-control','id'=>'inlineFormCustomSelect']) !!}
-                          
-                          {!! Form::select($name, $list, $selected, [$options]) !!}  --}}
+                        
+                        
                           <select name="category_id" class="form-control"> 
                           
                           <option selected> Choose Category </option>
@@ -73,16 +72,12 @@
                               <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach
                           
-                           
-    
-                          
                         </select>
-                        <br/><br/>
+                        <br/>
                        
-                        <span><i class="fas fa-camera"></i></span>
-                        {!! Form::file('file',['name'=>'file']) !!}<br/><br/>
                         
-                        {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}
+
+                        {!! Form::submit('Add', ['class'=>'btn btn-primary btn-block']) !!}
                     
                         {!! Form::close() !!}<br/><br/>
                         

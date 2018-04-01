@@ -97,8 +97,7 @@ class articlesController extends Controller
      */
     public function edit($id)
     {
-        $editart = App\articles::find($id);
-        return view('');
+        
     }
 
     /**

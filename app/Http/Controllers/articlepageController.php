@@ -15,7 +15,7 @@ class articlepageController extends Controller
     {
         
         $articles = App\articles::all();
-        $x = $articles;
+  
         $articlepage =  App\articles::get();
         return view('articlepage' , compact('articlepage', 'articles'));
     }
@@ -49,9 +49,9 @@ class articlepageController extends Controller
      */
     public function show($id)
     {
-        $articles2 = App\articles::find($id);
-     //   return view('articlepage');
-        return redirect()->route('articlepage.index', ['x'=>$articles2]);
+        $articles = App\articles::find($id);
+    
+        return view('articlepage')->withArticles($articles);
     }
 
     /**
@@ -62,7 +62,9 @@ class articlepageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $articles = App\articles::find($id);
+
+        return view('edit-art')->withArticles($articles);
     }
 
     /**
@@ -74,7 +76,14 @@ class articlepageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $articles = App\articles::find($id);
+
+        $articles->title = $request->input('edit-title');
+        $articles->content = $request->input('edit-content');
+        $articles->save();
+
+        // we reurn the name of view and the function of route view
+        return redirect()->route('articlepage.show', $articles->id_articles);
     }
 
     /**
