@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Database\Query\Builder;
 use App;
+use Session;
 
 
 
@@ -19,7 +20,8 @@ class articlesController extends Controller
      */
     public function index()
     {
-       
+      // $id = Auth::id();
+      // where('owner_id','id')
        $articles = App\articles::orderBy('id_articles','desc')->get();
     
        return View('arts', compact('articles'));
@@ -47,7 +49,7 @@ class articlesController extends Controller
         $addArt              = new App\articles();
         $addArt->title       = $request->input('art-title');
         $addArt->content     = $request->input('art-content');
-        $addArt->owner_id    = 0; // i will ad user id here
+        $addArt->fk_user_id    = 1;
         $addArt->category_id = $request->input('category_id'); // i will ad category_id here
         
         
@@ -58,7 +60,9 @@ class articlesController extends Controller
         $addArt->imgpath     = $name ;
         
         $addArt->save();
-        return redirect()->route('home.index');
+
+        Session::flash('success','New Article has been added Successfully !!');
+        return redirect()->route('home');
     }
 
 
@@ -121,6 +125,6 @@ class articlesController extends Controller
     public function destroy($id)
     {
         $artdelete = App\articles::destroy($id);
-        return redirect()->route('home.index');
+        return redirect()->route('home');
     }
 }

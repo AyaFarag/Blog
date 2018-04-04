@@ -4,17 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
-use Illuminate\Support\Facades\Session;
+use Session;
 
-
-
-class homeController extends Controller
+class HomeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
+    
+    
+    //  public function index()
+    // {
+    //     return view('home');
+    // }
+
     public function index()
     {
         $category = App\categories::all();
@@ -22,7 +37,6 @@ class homeController extends Controller
       
         return View('home', compact('articles','category'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -38,7 +52,6 @@ class homeController extends Controller
         // return View('home', compact('categories')); 
       //   return view('newArticle')->withCategoryies($categoryies);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -49,14 +62,11 @@ class homeController extends Controller
     {
         $addcategory = new App\categories();
         $addcategory->name = $request->input('add-category');
-        $addcategory->parent_id = 0;
+
         $addcategory->save();
-
         Session::flash('success','New Category has been added');
-
-        return redirect()->route('home.index');
+        return redirect()->route('home');
     }
-
     /**
      * Display the specified resource.
      *
@@ -67,7 +77,6 @@ class homeController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -78,7 +87,6 @@ class homeController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -90,7 +98,6 @@ class homeController extends Controller
     {
         //
     }
-
     /**
      * Remove the specified resource from storage.
      *

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // admin cpanel in cpanel view
@@ -53,3 +53,7 @@ Route::get('editarticle', function () {
 }); 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'homeController@index')->name('home');

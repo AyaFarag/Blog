@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Session;
+
 class articlepageController extends Controller
 {
     /**
@@ -63,8 +65,13 @@ class articlepageController extends Controller
     public function edit($id)
     {
         $articles = App\articles::find($id);
-
-        return view('edit-art')->withArticles($articles);
+        $categories = App\categories::all();
+        $cats = array();
+        foreach ($categories as $category) {
+            $cats[$category->id] = $category->name;
+        }
+        
+        return view('edit-art')->withArticles($articles)->withCategories($cats);
     }
 
     /**
@@ -80,8 +87,9 @@ class articlepageController extends Controller
 
         $articles->title = $request->input('edit-title');
         $articles->content = $request->input('edit-content');
+        $articles->category_id = $request->input('category');
         $articles->save();
-
+        Session::flash('success','Article has been Updated Successfully !!');
         // we reurn the name of view and the function of route view
         return redirect()->route('articlepage.show', $articles->id_articles);
     }

@@ -18,8 +18,8 @@ class CreateArticlesTable extends Migration
             $table->string('imgpath');
             $table->string('title');
             $table->longText('content');
-            $table->integer('owner_id');
-         
+          //  $table->integer('fk_user_id');
+          //  $table->integer('fk_category_id');
             $table->timestamps();
         });
     }

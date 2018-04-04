@@ -41,7 +41,6 @@ class categoriesController extends Controller
     {
         $addcategory = new App\categories();
         $addcategory->name = $request->input('category-add');
-        $addcategory->parent_id = 0;
         $addcategory->save();
 
         Session::flash('success','New Category has been added');

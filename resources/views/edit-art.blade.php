@@ -8,16 +8,21 @@
             <div>
                     {!! Form::model($articles ,['route'=> ['editarticle.update', $articles->id_articles], 'method'=>'PUT']) !!}
                         
-                    {!! Form::label('headtitle', 'Edit Article',['class'=>'font-weight-bold text-primary h5']) !!}<br/>
+                    {!! Form::label('headtitle', 'Edit Article', ['class'=>'font-weight-bold text-primary h5']) !!}<br/>
             
-                    {!! Form::label('title', 'Title:') !!}
+                    {!! Form::label('title', 'Title:') !!}<br/>
                     
-                    {!! Form::text('title',old('title'),['class'=>'form-control','id'=>'first','name'=>'edit-title'] ) !!}<br/>
+                    {!! Form::text('title',old('title'), ['class'=>'form-control','id'=>'first','name'=>'edit-title'] ) !!}<br/>
             
-                    {!! Form::label('content', 'Content :') !!}
+                    {!! Form::label('category', 'Category :') !!}
+
+                    {!! form::select('category',$categories, ['class' =>'form-control', 'name' => 'category']) !!}<br/>
+
+                    {!! Form::label('content', 'Content :') !!}<br/>
             
-                    {!! Form::textarea('content',old('content'),['class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'edit-content'] ) !!}
-            
+                    {!! Form::textarea('content',old('content'), ['class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'edit-content'] ) !!}
+
+
                   
                     
                    <br/><br/>
@@ -55,10 +60,7 @@
                                          {!! Form::submit('Cancel', ['class'=>'btn btn-danger btn-block']) !!}
                                          {!! Form::close() !!}
                                          </div>
-                                         {{--  <form action="{{action('articlepageController@edit', $articles->id_articles)}}" method="GET" class="">
-                                               {{ csrf_field() }}
-                                             <button type="submit" class=" btn btn-success btn-block">Edit</button>
-                                         </form>  --}}
+
                                         
                
                                        </div>
