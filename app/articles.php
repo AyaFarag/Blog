@@ -11,7 +11,7 @@ class articles extends Model
     protected $table = "articles";
 
     protected $fillable = [
-        'title', 'content','owner_id','category_id'
+        'title', 'content','category_id'
     ];
 
     public function articles()
@@ -42,6 +42,11 @@ class articles extends Model
     public function categories()
     {
         return $this->belongsTo('App\categories','category_id');
+    }
+    
+    public function tags()
+    {
+        return $this->belongsToMany('App\tags','article_tag','id_articles','id');
     }
 
 }

@@ -14,7 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
-            $table->increments('id_articles')->unsigned();
+            $table->increments('id_articles');
             $table->string('imgpath');
             $table->string('title');
             $table->longText('content');
