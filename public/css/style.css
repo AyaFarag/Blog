@@ -78,3 +78,6 @@ body
     width: 50%;
     margin: auto;
 }
+.mb-lg-0, .my-lg-0 {
+    margin-left: 70px;
+}
