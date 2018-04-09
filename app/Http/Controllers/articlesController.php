@@ -61,7 +61,10 @@ class articlesController extends Controller
         
         $addArt->save();
 
+        $addArt->tags()->sync($request->input('checktag'), false);
+        
         Session::flash('success','New Article has been added Successfully !!');
+        
         return redirect()->route('home');
     }
 

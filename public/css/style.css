@@ -19,7 +19,8 @@
     color: rgba(253, 250, 250, 1);
 }
 .leftColum {
-    margin-top: 31px;
+    
+    padding: 10px;
 }
 .cat {
     width: 25%;
@@ -51,4 +52,29 @@ margin-top: 30px;
 }
 .cancelbtn {
     margin-top: 10px;
+}
+.headfont {
+    font-size: 1.8em;
+}
+.btnmargin {
+    margin-top: 10px;
+}
+.artcolhi {
+    height: 450px;
+}
+.height {
+    height: 200px;
+}
+.catdiv {
+    position: absolute;
+    top: 300px;
+    width: 85%;
+}
+body 
+{
+    position: relative;
+}
+.artform {
+    width: 50%;
+    margin: auto;
 }

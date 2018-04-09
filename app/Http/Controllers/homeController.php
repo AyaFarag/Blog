@@ -25,17 +25,15 @@ class HomeController extends Controller
      */
     
     
-    //  public function index()
-    // {
-    //     return view('home');
-    // }
+
 
     public function index()
     {
+        $tags = App\tags::all();
         $category = App\categories::all();
         $articles = App\articles::orderBy('id_articles','desc')->get();
       
-        return View('home', compact('articles','category'));
+        return View('home', compact('articles','category','tags'));
     }
     /**
      * Show the form for creating a new resource.
@@ -44,13 +42,13 @@ class HomeController extends Controller
      */
     public function create()
     {
-      //  $categor = 'Aya';
-        
-      //  return view('home', compact('categor'));
-        // $categories = App\categories::all();
-       
-        // return View('home', compact('categories')); 
-      //   return view('newArticle')->withCategoryies($categoryies);
+     
+        $tags = App\tags::all();
+        $category = App\categories::all();
+
+        return view('addnewart')->withCategory($category)->withTags($tags);
+
+
     }
     /**
      * Store a newly created resource in storage.

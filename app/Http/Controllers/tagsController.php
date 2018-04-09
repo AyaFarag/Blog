@@ -36,7 +36,11 @@ class tagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addtags = new App\tags();
+        $addtags->name = $request->input('add-tag');
+        $addtags->save();
+
+        return redirect()->route('tags.index');
     }
 
     /**

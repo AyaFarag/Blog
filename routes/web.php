@@ -51,7 +51,7 @@ Route::resource('editarticle','articlepageController');
 Route::get('editarticle', function () {
     return view('edit-art');
 }); 
-
+Route::get('addnewarticle', 'homeController@create');
 
 
 Auth::routes();

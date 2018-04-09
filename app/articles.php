@@ -46,7 +46,7 @@ class articles extends Model
     
     public function tags()
     {
-        return $this->belongsToMany('App\tags','article_tag','id_articles','id');
+        return $this->belongsToMany('App\tags','article_tag','fk_article_id','fk_tag_id');
     }
 
 }

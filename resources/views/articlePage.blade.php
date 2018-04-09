@@ -15,11 +15,16 @@
    
          
             <div class="card-body">
-                    <h4 class="card-title"> {{ $articles->title }}</h4>
+                    <h4 class="card-title text-primary"> {{ $articles->title }}</h4>
                       <hr/>
                     <p class="card-text lead"> {{ $articles->content }} </p>
                      <img class="card-img-top artimg" src="{{ asset('uploads/'. $articles->imgpath ) }}" alt="Card image cap "/>
                     <br/><br/>
+                    @foreach ($articles->tags as $tag)
+                    <span class="badge badge-dark">{{$tag->name}}</span>
+                    @endforeach
+                    
+                    <br/>
             </div>
          </div>
     </div>

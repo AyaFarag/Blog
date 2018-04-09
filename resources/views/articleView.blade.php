@@ -4,7 +4,7 @@
   
   
   
-  <div class="card-body">
+  <div class="card-body bg-light">
     <div class="float-right">
         <div class="d-inline-block">
             <form action="{{action('articlesController@destroy', $art->id_articles)}}" method="POST">
@@ -25,8 +25,12 @@
     <h4 class="card-title"><a href="{{route('articlepage.show' ,$art->id_articles)}}">{{$art->title}}</a></h4>
       
     <p class="card-text lead">{{ substr($art->content, 0, 100) }}{{ strlen($art->content) > 40 ? "..." : ""}}</p>
-    <a href="{{route('articlepage.show' ,$art->id_articles)}}" class="">Read more</a><br/><br/>
-
+    <a href="{{route('articlepage.show' ,$art->id_articles)}}" class="">Read more</a><br/>
+    {{--  tags   --}}
+    @foreach ($art->tags as $tag)
+    <span class="badge badge-dark">{{$tag->name}}</span>
+    @endforeach
+    <br/><br/>
     <img class="card-img-top" src="{{ asset('uploads/'. $art->imgpath) }}" alt="Card image cap"/><br/><br/>
 
     <span class="art-span">Auther</span>

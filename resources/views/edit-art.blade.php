@@ -18,6 +18,16 @@
 
                     {!! form::select('category',$categories, ['class' =>'form-control', 'name' => 'category']) !!}<br/>
 
+                    <label>Tags :</label>
+                    <div class="form-control">
+                     @foreach ($tags as $tag)
+                     <input type="checkbox" value="{{$tag->id}}" class="" name="checktag[]" id="checkoption"/> 
+                     <label for="checkoption"> {{$tag->name}} </label>
+                     @endforeach  
+                    </div>                           
+                    
+
+                     <br/>
                     {!! Form::label('content', 'Content :') !!}<br/>
             
                     {!! Form::textarea('content',old('content'), ['class'=>'form-control','id'=>'sec', 'rows'=>'5','name'=>'edit-content'] ) !!}
@@ -51,7 +61,11 @@
                                          <h6 class="">Category :</h6>
                                          <p class=""> Posted In : <a href="#"> {{$articles->categories['name']}} </a></p><br/>
 
-
+                                         <h6 class=""> Tags :</h6>
+                                         @foreach ($articles->tags as $tag)
+                                         <span class="badge badge-dark">{{$tag->name}}</span>
+                                         @endforeach
+                                         <br/><br/>
                                          {!! Form::submit('Save', ['class'=>'btn btn-success btn-block ']) !!}
                                          {!! Form::close() !!}
 
@@ -73,26 +87,6 @@
        
         
 
-
-
-
-        {{--  <form action="{{action('editarticle.update')}}" method="PUT">
-            {{ csrf_field() }}
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1"><b>Add New Article</b></label>
-    
-            <input type="text" name="art-title" class="form-control  " placeholder="Title"><br/>
-    
-            <textarea name="art-content" class="form-control " id="exampleFormControlTextarea1" rows="5" placeholder="What Is Your New Topic Today ? "></textarea>
-            
-            <input type="file" name="art-file" class="">
-            
-            <span><i class="fas fa-camera"></i></span>
-             
-            
-        </div>
-            <button type="submit" class="btn btn-primary ">Save</button>
-        </form><br/>  --}}
 
 
 @include('footer')

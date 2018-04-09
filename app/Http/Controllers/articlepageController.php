@@ -51,9 +51,10 @@ class articlepageController extends Controller
      */
     public function show($id)
     {
+        $tags = App\tags::all();
         $articles = App\articles::find($id);
     
-        return view('articlepage')->withArticles($articles);
+        return view('articlepage')->withArticles($articles)->withTags($tags);
     }
 
     /**
@@ -71,7 +72,13 @@ class articlepageController extends Controller
             $cats[$category->id] = $category->name;
         }
         
-        return view('edit-art')->withArticles($articles)->withCategories($cats);
+        $tags = App\tags::all();
+        $tags2 = array();
+        foreach ($tags as $tag) 
+        {
+            $tags2[$tag->id] = $tag->name;
+        }
+        return view('edit-art')->withArticles($articles)->withCategories($cats)->withTags($tags);
     }
 
     /**
@@ -88,7 +95,20 @@ class articlepageController extends Controller
         $articles->title = $request->input('edit-title');
         $articles->content = $request->input('edit-content');
         $articles->category_id = $request->input('category');
+
         $articles->save();
+
+        if (isset($request->tags)) 
+        {
+            $articles->tags()->sync($request->tags);
+        } 
+        else 
+        {
+            $articles->tags()->sync(array());
+        }
+
+        $articles->tags()->sync($request->input('checktag'), false);
+
         Session::flash('success','Article has been Updated Successfully !!');
         // we reurn the name of view and the function of route view
         return redirect()->route('articlepage.show', $articles->id_articles);
