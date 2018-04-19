@@ -13,9 +13,12 @@
             <div class="leftColum"> 
                 <div>
                       <p>   
+                        <form method="POST">
+                                {{ csrf_field() }}
                         <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                     Friends List
-                            </button>
+                        </button>
+                        </form>
                           </p>
                           <div class="collapse.show" id="collapseExample">
                                 <div class="card card-body height">

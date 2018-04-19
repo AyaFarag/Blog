@@ -14,7 +14,7 @@
 
       <div class="row">
           @foreach ($articles as $art)
-        <div class="col col-3">
+        <div class="col col-4">
           <div>    
             <div class="card" >
               <div class="card-body bg-light artcolhi">
